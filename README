@@ -1,0 +1,21 @@
+A POC about an idea on howto debug mobile devices
+
+HOWTO:
+
+1. Depends on socket.io. Install it with "npm install socket.io" under server directory.
+2. Add <script src="http://host:port/socket.io/socket.io.js"></script> and <script src="http://host/path/to/client/debugger.js"></script>
+3. Initialize connection by creating the debugger object. "var debug = new Debugger();"
+4. Start debugging by calling "debug.log(data, moredata, evenmoredata);"
+
+PITFALLS:
+
+"TypeError: Converting circular structure to JSON" from JSON.stringify which cannot hande circular references.
+
+For example structures like this:
+var a = {};
+a.reference = a;
+
+So you cannot log HTML Nodes or jQuery Objects.
+
+If YOU have a simple solution that I could use, please send pull requests. Or if you think this idea is the dumbest
+idea ever, please feel free to think so :)
